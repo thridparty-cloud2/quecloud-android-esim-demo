@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp"
+    android:background="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ================= 结果日志框 ================= -->
+        <LinearLayout
+            android:id="@+id/resultLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxHeight="240dp"
+            android:minHeight="140dp"
+            android:layout_margin="16dp"
+            android:background="#F5F5F5"
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- 标题 + 清空 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Result Log"
+                    android:textColor="#000"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- 日志内容 -->
+            <ScrollView
+                android:id="@+id/resultScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="操作结果显示区域..."
+                    android:textSize="13sp"
+                    android:textColor="#333"
+                    android:typeface="monospace"/>
+            </ScrollView>
+
+        </LinearLayout>
+
+
+        <!-- ================= 标题 ================= -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="eSIM 测试工具"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/resultLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= IP ================= -->
+        <EditText
+            android:id="@+id/etIp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="IP"
+            android:text="192.168.1.115"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= PORT ================= -->
+        <EditText
+            android:id="@+id/etPort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="端口"
+            android:text="8125"
+            android:inputType="number"
+            android:padding="12dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@android:drawable/edit_text"
+            app:layout_constraintTop_toBottomOf="@id/etIp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= 连接按钮 ================= -->
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="连接设备"
+            android:textColor="#FFF"
+            android:backgroundTint="#007AFF"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toBottomOf="@id/etPort"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= 状态 ================= -->
+        <LinearLayout
+            android:id="@+id/layoutStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/btnConnect"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/ivStatus"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@android:drawable/presence_offline"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未连接"
+                android:textColor="#FF3B30"
+                android:layout_marginStart="6dp"/>
+        </LinearLayout>
+
+
+        <!-- ================= eimId ================= -->
+        <EditText
+            android:id="@+id/etEimId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="eimId"
+            android:text="1.3.6.1.4.1.58809.999.58809.1"
+            android:padding="12dp"
+            android:layout_margin="16dp"
+            android:background="@android:drawable/edit_text"
+            app:layout_constraintTop_toBottomOf="@id/layoutStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= eimDomain ================= -->
+        <EditText
+            android:id="@+id/etEimDomain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="eimDomain"
+            android:text="iot-esim-global-gateway.quectel.com"
+            android:padding="12dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@android:drawable/edit_text"
+            app:layout_constraintTop_toBottomOf="@id/etEimId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= 初始化 ================= -->
+        <Button
+            android:id="@+id/init"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="初始化"
+            android:textColor="#FFF"
+            android:backgroundTint="#007AFF"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toBottomOf="@id/etEimDomain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= AC CODE ================= -->
+        <EditText
+            android:id="@+id/etAcCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="AC 激活码"
+            android:text="LPA:1$secsmsminiapp.eastcompeace.com$8E9BADC212C04FAC8920ED1CE08CBD78"
+            android:padding="12dp"
+            android:layout_margin="16dp"
+            android:background="@android:drawable/edit_text"
+            app:layout_constraintTop_toBottomOf="@id/init"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= 下载 ================= -->
+        <Button
+            android:id="@+id/down"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="开始下载"
+            android:textColor="#FFF"
+            android:backgroundTint="#007AFF"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toBottomOf="@id/etAcCode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= ICCID ================= -->
+        <EditText
+            android:id="@+id/etIccid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="ICCID"
+            android:text="89320420000023802844"
+            android:padding="12dp"
+            android:layout_margin="16dp"
+            android:background="@android:drawable/edit_text"
+            app:layout_constraintTop_toBottomOf="@id/down"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- ================= 按钮网格 ================= -->
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="启动"/>
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="停止"/>
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="删除"/>
+
+        <Button
+            android:id="@+id/getProfile"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:textAllCaps="false"
+            android:text="获取Profile"/>
+
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="start,stop,delete,getProfile"
+            app:flow_wrapMode="aligned"
+            app:flow_maxElementsWrap="2"
+            app:flow_horizontalGap="12dp"
+            app:flow_verticalGap="12dp"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toBottomOf="@id/etIccid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
