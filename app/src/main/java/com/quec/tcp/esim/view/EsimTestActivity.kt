@@ -19,6 +19,7 @@ import com.quec.tcp.esim.utils.LoadingManager
 import com.quec.tcp.esim.utils.TCPClientUtils
 import com.quec.tcp.esim.vm.EsimTestViewModel
 import com.quectel.basic.queclog.QLog
+import com.quectel.sdk.esim.manager.bean.QuecEsimAction
 import com.quectel.sdk.esim.manager.ipa.TransmitCallback
 import com.quectel.sdk.esim.manager.view.EsimMallFragment
 import com.quectel.sdk.esim.manager.web.EsimManagerCallback
@@ -177,6 +178,20 @@ class EsimTestActivity : AppCompatActivity(),
     // --- TransmitCallback 接口实现 (委托给 ViewModel 处理) ---
     override fun onTransmitApdu(apdu: ByteArray): ByteArray {
         return viewModel.handleTransmitApdu(apdu)
+    }
+
+    override fun onInteractionAction(action: QuecEsimAction) {
+        //QuecEsimAction.QUEC_ESIM_DOWNLOAD_PROFILE, 下载 Profile
+        //
+        //QuecEsimAction.QUEC_ESIM_DOWNLOAD_ENABLE_PROFILE, 下载并启用 Profile
+        //
+        //QuecEsimAction.QUEC_ESIM_SWITCH_PROFILE, 切换 Profile
+        //
+        //QuecEsimAction.QUEC_ESIM_DISABLE_PROFILE, 停用 Profile
+        //
+        //QuecEsimAction.QUEC_ESIM_DELETE_PROFILE, 删除 Profile
+        //
+        //QuecEsimAction.QUEC_ESIM_SYNC_PROFILES; 同步 Profiles
     }
 
     override fun onNeedScanQr(block: (String) -> Unit) {

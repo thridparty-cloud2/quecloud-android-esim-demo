@@ -105,7 +105,7 @@ managerService?.openStore(model)
 
 **EsimManagerCallback**
 
-```java
+```kotiln
 interface EsimManagerCallback {
 
     /**
@@ -125,12 +125,16 @@ interface EsimManagerCallback {
         block: (qrInfo: String) -> Unit
     )
 
+    /**
+     * 页面操作事件回调
+     */
+    fun onInteractionAction(action: QuecEsimAction)
 }
 
 ```
 
 **示例代码**
-```java
+```kotiln
 private var pendingScanCallback: ((String) -> Unit)? = null
 
 override fun onNeedScanQr(block: (String) -> Unit) {
@@ -140,6 +144,21 @@ override fun onNeedScanQr(block: (String) -> Unit) {
 override fun onStartDownProfile(block: (Boolean) -> Unit) {
     block(true)
 }
+
+override fun onInteractionAction(action: QuecEsimAction) {
+    //QuecEsimAction.QUEC_ESIM_DOWNLOAD_PROFILE, 下载 Profile
+    //
+    //QuecEsimAction.QUEC_ESIM_DOWNLOAD_ENABLE_PROFILE, 下载并启用 Profile
+    //
+    //QuecEsimAction.QUEC_ESIM_SWITCH_PROFILE, 切换 Profile
+    //
+    //QuecEsimAction.QUEC_ESIM_DISABLE_PROFILE, 停用 Profile
+    //
+    //QuecEsimAction.QUEC_ESIM_DELETE_PROFILE, 删除 Profile
+    //
+    //QuecEsimAction.QUEC_ESIM_SYNC_PROFILES; 同步 Profiles
+}
+
 // 获取相机权限
 private fun requestPermissions() {
     XXPermissions.with(this)
