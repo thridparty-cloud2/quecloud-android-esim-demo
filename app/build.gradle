@@ -72,7 +72,7 @@ dependencies {
     // Android扫码功能实现
     implementation 'com.github.yuzhiqiang1993:zxing:2.2.9'
     // eSIM->h5 sdk
-    implementation "com.quectel.app.sdk:quec-esim-manager-sdk:0.0.21"
+    implementation "com.quectel.app.sdk:quec-esim-manager-sdk:0.0.22"
     // 微信支付
     implementation "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.23"
 }
