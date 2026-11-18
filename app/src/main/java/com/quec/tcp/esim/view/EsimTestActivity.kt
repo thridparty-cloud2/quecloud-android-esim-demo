@@ -181,17 +181,30 @@ class EsimTestActivity : AppCompatActivity(),
     }
 
     override fun onInteractionAction(action: QuecEsimAction) {
-        //QuecEsimAction.QUEC_ESIM_DOWNLOAD_PROFILE, 下载 Profile
-        //
-        //QuecEsimAction.QUEC_ESIM_DOWNLOAD_ENABLE_PROFILE, 下载并启用 Profile
-        //
-        //QuecEsimAction.QUEC_ESIM_SWITCH_PROFILE, 切换 Profile
-        //
-        //QuecEsimAction.QUEC_ESIM_DISABLE_PROFILE, 停用 Profile
-        //
-        //QuecEsimAction.QUEC_ESIM_DELETE_PROFILE, 删除 Profile
-        //
-        //QuecEsimAction.QUEC_ESIM_SYNC_PROFILES; 同步 Profiles
+        QLog.d(TAG, "onInteractionAction: $action")
+        when (action) {
+            QuecEsimAction.QUEC_ESIM_DOWNLOAD_PROFILE -> {
+                QLog.d(TAG, "下载 Profile")
+            }
+            QuecEsimAction.QUEC_ESIM_DOWNLOAD_ENABLE_PROFILE -> {
+                QLog.d(TAG, "下载并启用 Profile")
+            }
+            QuecEsimAction.QUEC_ESIM_SWITCH_PROFILE -> {
+                QLog.d(TAG, "切换 Profile")
+            }
+            QuecEsimAction.QUEC_ESIM_DISABLE_PROFILE -> {
+                QLog.d(TAG, "停用 Profile")
+            }
+            QuecEsimAction.QUEC_ESIM_DELETE_PROFILE -> {
+                QLog.d(TAG, "删除 Profile")
+            }
+            QuecEsimAction.QUEC_ESIM_SYNC_PROFILES -> {
+                QLog.d(TAG, "同步 Profiles")
+            }
+            is QuecEsimAction.QUEC_ESIM_APN_SYNC -> {
+                QLog.d(TAG, "APN 下发 iccid=${action.iccid}, apn=${action.apn}, eid=${action.eid}")
+            }
+        }
     }
 
     override fun onNeedScanQr(block: (String) -> Unit) {
